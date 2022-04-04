@@ -1,9 +1,13 @@
-import { Text, View } from "react-native";
+import { NativeBaseProvider, Flex } from "native-base";
+
+import StartGameScreen from "./src/screens/StartGameScreen";
 
 export default function App() {
   return (
-    <View>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+    <NativeBaseProvider>
+      <Flex flex={1} justify="center" px={5}>
+        <StartGameScreen />
+      </Flex>
+    </NativeBaseProvider>
   );
 }
