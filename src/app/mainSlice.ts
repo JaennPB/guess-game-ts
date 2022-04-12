@@ -1,18 +1,22 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface MainState {
-  userInput: string | null;
+  userInput: string;
 }
 
 export const initialState: MainState = {
-  userInput: null,
+  userInput: "",
 };
 
 export const mainSlice = createSlice({
   name: "main",
   initialState,
-  reducers: {},
+  reducers: {
+    confirmUserInput: (state, action: PayloadAction<string>) => {
+      state.userInput = action.payload;
+    },
+  },
 });
 
-export const {} = mainSlice.actions;
+export const { confirmUserInput } = mainSlice.actions;
 export default mainSlice.reducer;
