@@ -23,7 +23,12 @@ export default function App() {
     <Provider store={store}>
       <NativeBaseProvider>
         <NavigationContainer>
-          <RootStack.Navigator>
+          <RootStack.Navigator
+            screenOptions={{
+              headerBackVisible: false,
+              headerTitle: "Guess Game",
+            }}
+          >
             <RootStack.Screen
               name="StartGameScreen"
               component={StartGameScreen}
