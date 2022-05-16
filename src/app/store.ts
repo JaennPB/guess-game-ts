@@ -3,9 +3,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import mainSlice from "./mainSlice";
 
 export const store = configureStore({
-  reducer: {
-    main: mainSlice,
-  },
+  reducer: mainSlice,
 });
 
 export type RootState = ReturnType<typeof store.getState>;

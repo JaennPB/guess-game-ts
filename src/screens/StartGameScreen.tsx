@@ -34,8 +34,8 @@ const StartGameScreen: React.FC = () => {
       return;
     }
 
-    dispatch(confirmUserInput(enteredValue));
-    navigation.navigate("GameScreen", { userNumber: enteredValue });
+    dispatch(confirmUserInput(userNumber));
+    navigation.navigate("GameScreen");
   }
 
   return (

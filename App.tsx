@@ -12,7 +12,7 @@ import GameOverScreen from "./src/screens/GameOverScreen";
 
 export type StackParams = {
   StartGameScreen: undefined;
-  GameScreen: { userNumber: string };
+  GameScreen: undefined;
   GameOverScreen: undefined;
 };
 
@@ -26,7 +26,7 @@ export default function App() {
           <RootStack.Navigator
             screenOptions={{
               headerBackVisible: false,
-              headerTitle: "Guess Game",
+              headerShown: false,
             }}
           >
             <RootStack.Screen
