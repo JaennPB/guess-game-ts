@@ -1,20 +1,17 @@
 import { useState } from "react";
-import { Box, Flex, Input, Button } from "native-base";
+import { Box, Flex, Input, Button, Heading } from "native-base";
 import { Alert } from "react-native";
 
-import { useAppDispatch } from "../app/hooks";
-import { confirmUserInput } from "../app/mainSlice";
+import { useAppDispatch } from "../hooks/reduxHooks";
+import { useAppNavigation } from "../hooks/navigationHooks";
 
-import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import type { StackParams } from "../../App";
-type GameScreenProp = NativeStackNavigationProp<StackParams>;
+import { confirmUserInput } from "../app/mainSlice";
 
 const StartGameScreen: React.FC = () => {
   const [enteredValue, setEnteredValue] = useState<string>("");
   const dispatch = useAppDispatch();
 
-  const navigation = useNavigation<GameScreenProp>();
+  const navigation = useAppNavigation();
 
   function inputChangeHandler(value: string): void {
     setEnteredValue(value);
@@ -34,6 +31,8 @@ const StartGameScreen: React.FC = () => {
       return;
     }
 
+    setEnteredValue("");
+
     dispatch(confirmUserInput(userNumber));
     navigation.navigate("GameScreen");
   }
@@ -41,8 +40,9 @@ const StartGameScreen: React.FC = () => {
   return (
     <Flex flex={1} justify="center">
       <Box display="flex" alignItems="center">
+        <Heading>Guess My Number</Heading>
         <Input
-          placeholder="Guess my number"
+          placeholder="Enter a number"
           maxLength={2}
           keyboardType="number-pad"
           size="2xl"
@@ -63,7 +63,7 @@ const StartGameScreen: React.FC = () => {
             borderRadius={100}
             onPress={confirmInputHandler}
           >
-            Confirm
+            Let's play!
           </Button>
         </Flex>
       </Box>

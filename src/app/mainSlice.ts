@@ -2,12 +2,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface MainState {
   userInput: number | null;
-  computerGuess: number | null;
+  guessArr: number[];
 }
 
 export const initialState: MainState = {
   userInput: null,
-  computerGuess: null,
+  guessArr: [],
 };
 
 export const mainSlice = createSlice({
@@ -17,11 +17,15 @@ export const mainSlice = createSlice({
     confirmUserInput: (state, action: PayloadAction<number>) => {
       state.userInput = action.payload;
     },
-    confirmComputerGuess: (state, action: PayloadAction<number>) => {
-      state.computerGuess = action.payload;
+    logGuesses: (state, action: PayloadAction<number>) => {
+      state.guessArr.unshift(action.payload);
+    },
+    resetGame: (state) => {
+      state.userInput = null;
+      state.guessArr = [];
     },
   },
 });
 
-export const { confirmUserInput, confirmComputerGuess } = mainSlice.actions;
+export const { confirmUserInput, logGuesses, resetGame } = mainSlice.actions;
 export default mainSlice.reducer;

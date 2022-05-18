@@ -1,10 +1,13 @@
-import { NativeBaseProvider, Flex } from "native-base";
+import { NativeBaseProvider } from "native-base";
 
 import { Provider } from "react-redux";
 import { store } from "./src/app/store";
 
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {
+  createNativeStackNavigator,
+  NativeStackNavigationProp,
+} from "@react-navigation/native-stack";
 
 import StartGameScreen from "./src/screens/StartGameScreen";
 import GameScreen from "./src/screens/GameScreen";
@@ -15,6 +18,7 @@ export type StackParams = {
   GameScreen: undefined;
   GameOverScreen: undefined;
 };
+export type GameScreenProp = NativeStackNavigationProp<StackParams>;
 
 const RootStack = createNativeStackNavigator<StackParams>();
 
